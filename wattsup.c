@@ -91,6 +91,9 @@ struct wu_data {
 	unsigned int	power_factor;
 	unsigned int	duty_cycle;
 	unsigned int	power_cycle;
+	
+	unsigned int	frequency;
+	unsigned int	VA;
 };
 
 struct wu_options {
@@ -162,6 +165,9 @@ enum {
 	wu_field_power_factor,
 	wu_field_duty_cycle,
 	wu_field_power_cycle,
+
+	wu_field_frequency,
+	wu_field_va
 };
 
 struct wu_field {
@@ -251,6 +257,15 @@ static struct wu_field wu_fields[wu_num_fields] = {
 		.descr	= "Indication of power cycle",
 	},
 
+	[wu_field_frequency]	= {
+		.name	= "frequency",
+		.descr	= "AC frequency (HZ)",
+	},
+
+	[wu_field_va]	= {
+		.name	= "VA",
+		.descr	= "VA",
+	},
 };
 
 
@@ -692,6 +707,8 @@ static int wu_show_header(int fd)
 			[13] = "power factor header",
 			[14] = "duty cycle header",
 			[15] = "power cycle header",
+			[16] = "frequency header",
+			[17] = "VA header"
 		}
 	};
 	int ret;
@@ -875,6 +892,8 @@ static int wu_read_data(int fd)
 			[13] = "power factor",
 			[14] = "duty cycle",
 			[15] = "power cycle",
+			[16] = "frequency",
+			[17] = "VA"
 		},
 	};
 	int num_read = 0;
