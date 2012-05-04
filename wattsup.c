@@ -281,6 +281,7 @@ static void msg_start(const char * fmt, ...)
 static void msg_end(void)
 {
 	printf("\n");
+	fflush(stdout);
 }
 
 static void msg(const char * fmt, ...)
