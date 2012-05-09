@@ -839,8 +839,26 @@ static int filter_data(struct wu_packet * p, int i, char * buf)
 {
 	if (i < wu_num_fields) {
 		if (wu_fields[i].enable) {
+		  double scale;
+		  int digits;
+		  switch(i){
+		  case wu_field_min_amps:
+		  case wu_field_max_amps:
+		  case wu_field_amps:
+		    scale = 1000.0;
+		    digits = 3;
+		      break;
+		  case wu_field_power_factor:
+		  case wu_field_duty_cycle:
+		    scale = 1.0;
+		    digits = 1;
+		    break;
+		  default:
+		    scale = 10.0;
+		    digits = 1;
+		  }
 			double val = strtod(p->field[i], NULL);
-			snprintf(buf, 256, "%.1f", val / 10.0);
+			snprintf(buf, 256, "%.*lf", digits, val / scale);
 			return 1;
 		}
 	}
