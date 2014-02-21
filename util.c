@@ -1330,10 +1330,10 @@ static int wu_show_help(int unused)
 	       prog_name);
 	printf("\n");
 	
-	printf("<device> is the serial port the device is connected at.\n");
+	printf("<device> is the serial port to which the device is connected.\n");
 	printf("\n");
 
-	printf("<options> are any of the following:\n");
+	printf("<options> is any of the following:\n");
 	for (i = 0; i < wu_num_options; i++) {
 		n = printf("  -%c", wu_options[i].shortopt);
 
