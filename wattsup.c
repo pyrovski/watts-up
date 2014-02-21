@@ -6,11 +6,6 @@
  *
  *	This program is released under the GPLv2
  *
- *
- *	Compiled with:
- *
- *	gcc -O2 -Wall -o wattsup wattsup.c 
- *
  */
 
 #define _GNU_SOURCE
