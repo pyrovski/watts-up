@@ -12,7 +12,7 @@ test_library: test_library.c libwattsup.so
 
 install: all
 	install -m 0555 wattsup /usr/local/bin/
-	install -m 0444 wattsup.so /usr/local/lib/
+	install -m 0444 libwattsup.so /usr/local/lib/
 
 clean:
 	rm -f *~ $(targets)
