@@ -10,7 +10,10 @@
 
 #define _GNU_SOURCE
 
+#include <unistd.h>
+
 #include "wattsup_common.h"
+#include "util.h"
 #include "globals.h"
 
 int main(int argc, char ** argv)
