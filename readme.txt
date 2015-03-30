@@ -2,6 +2,7 @@ The default baud rate is 115200.
 
 This code originated from here:
   https://www.wattsupmeters.com/forum/index.php?topic=8.0
+This program is released under the GPLv2.
 
 To compile the binary, type "make".
 
