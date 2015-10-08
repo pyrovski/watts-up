@@ -177,6 +177,13 @@ int open_device(char * device_name, int * dev_fd)
 		return ret;
 	}
 
+	// check for leading /dev/
+
+	char * lastSlash = rindex(device_name, '/');
+	if(lastSlash && !strncmp(device_name, "/dev", lastSlash - device_name)){
+		device_name = lastSlash + 1;
+	}
+
 	/*
 	 * First, check if /sys/class/tty/<name>/ exists.
 	 */
@@ -190,7 +197,7 @@ int open_device(char * device_name, int * dev_fd)
 	}
 
 	if (!S_ISDIR(s.st_mode)) {
-		errno = -ENOTDIR;
+		ret = errno = -ENODEV;
 		err("%s is not a TTY device.", device_name);
 		goto Done;
 	}
