@@ -199,7 +199,6 @@ int open_device(char * device_name, int * dev_fd)
 
 	fchdir(cur_fd);
 
-
 	/*
 	 * Check if device node exists and is writable
 	 */
@@ -1025,11 +1024,11 @@ static void enable_all_fields(void)
 
 
 
-static int wu_show_help(int);
-static int wu_show_version(int);
+static int wu_show_help();
+static int wu_show_version();
 
 
-static int wu_store_count(int unused)
+static int wu_store_count()
 {
 	char * s = wu_option_value(wu_option_count);
 	char * end;
@@ -1044,13 +1043,13 @@ static int wu_store_count(int unused)
 	return 0;
 }
 
-static int wu_store_debug(int unused)
+static int wu_store_debug()
 {
 	wu_debug = 1;
 	return 0;
 }
 
-static int wu_store_delim(int unused)
+static int wu_store_delim()
 {
 	char * s = wu_option_value(wu_option_delim);
 	
@@ -1059,61 +1058,61 @@ static int wu_store_delim(int unused)
 	return 0;
 }
 
-static int wu_store_final(int unused)
+static int wu_store_final()
 {
 	wu_final = 1;
 	return 0;
 }
 
-static int wu_store_label(int unused)
+static int wu_store_label()
 {
 	wu_label = 1;
 	return 0;
 }
 
-static int wu_store_newline(int unused)
+static int wu_store_newline()
 {
 	wu_newline = 1;
 	return 0;
 }
 
-static int wu_store_suppress(int unused)
+static int wu_store_suppress()
 {
 	wu_suppress = 1;
 	return 0;
 }
 
-static int wu_store_localtime(int unused)
+static int wu_store_localtime()
 {
 	wu_localtime = 1;
 	return 0;
 }
 
-static int wu_store_gmtime(int unused)
+static int wu_store_gmtime()
 {
 	wu_gmtime = 1;
 	return 0;
 }
 
-static int wu_store_info_all(int unused)
+static int wu_store_info_all()
 {
 	wu_info_all = 1;
 	return 0;
 }
 
-static int wu_store_no_data(int unused)
+static int wu_store_no_data()
 {
 	wu_no_data = 1;
 	return 0;
 }
 
-static int wu_store_set_only(int unused)
+static int wu_store_set_only()
 {
 	wu_set_only = 1;
 	return 0;
 }
 
-static int wu_show_version(int unused)
+static int wu_show_version()
 {
 	printf("%s Version %s\n", prog_name, wu_version);
 	return 0;
@@ -1317,12 +1316,12 @@ struct wu_option wu_options[] = {
 
 #define wu_num_options ARRAY_SIZE(wu_options)
 
-static int wu_show_help(int unused)
+static int wu_show_help()
 {
 	int i;
 	int n;
 
-	wu_show_version(unused);
+	wu_show_version();
 	printf("  A program for interfacing with the Watts Up? Power Meter\n");
 	printf("\n");
 
