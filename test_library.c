@@ -15,6 +15,9 @@
 
 #define _GNU_SOURCE
 
+#include <unistd.h>
+
+#include "util.h"
 #include "wattsup_common.h"
 #include "globals.h"
 
